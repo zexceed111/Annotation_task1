@@ -33,8 +33,8 @@ class AnnotationValidator {
                 CorrectImplementation annotation = method.getAnnotation(CorrectImplementation.class);
 
                 // получаем ожидаемый возвращаемый тип и типы параметров из аннотации
-        ... expectedReturnType = annotation....();
-        ...[] expectedParameterTypes = annotation....();
+        Class<?> expectedReturnType = annotation.expectedReturnType();
+        Class<?>[] expectedParameterTypes = annotation.expectedParameterTypes();
 
                 // проверяем, соответствует ли фактический возвращаемый тип ожидаемому
                 if (!method.getReturnType().equals(expectedReturnType)) {
@@ -48,7 +48,7 @@ class AnnotationValidator {
                 }
 
                 // получаем фактические типы параметров
-                Class<?>[] actualParameterTypes = method....();
+                Class<?>[] actualParameterTypes = method.getParameterTypes();
 
                 // проверяем, соответствуют ли фактические типы параметров ожидаемым
                 if (!Arrays.equals(expectedParameterTypes, actualParameterTypes)) {
